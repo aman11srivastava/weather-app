@@ -97,18 +97,18 @@ if(!locationName){
     console.log(chalk.red('Please provide a valid location!'));
 }
 else{
-    geoCode(locationName, (error, data) => {
+    geoCode(locationName, (error, { longitude, latitude, placeName }) => {
         console.log(chalk.black.bgWhite('Weather Forecast'));
         if (error) {
             console.log(error);
         } else {
-            forecast(data.longitude, data.latitude, (error, forecastData) => {
+            forecast(longitude, latitude, (error, forecastData) => {
                 if(error){
                     console.log(error);
                 }
                 else{
-                    // console.log(data.placename);
-                    console.log(locationName);
+                    // console.log(locationName);
+                    console.log(placeName);
                     console.log(forecastData);
                 }
             })
